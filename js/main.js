@@ -104,21 +104,21 @@
         itemSelector: '.portfolio-item',
         layoutMode: 'fitRows'
     });
+    var currentFilter = '*';
+
     $('#portfolio-flters li').on('click', function () {
         $("#portfolio-flters li").removeClass('active');
         $(this).addClass('active');
-
-        portfolioIsotope.isotope({filter: $(this).data('filter')});
+        currentFilter = $(this).data('filter');
+        portfolioIsotope.isotope({ filter: currentFilter });
     });
-
 
     $('#portfolio-flters-temi li').on('click', function () {
         $("#portfolio-flters-temi li").removeClass('active');
         $("#portfolio-flters-luoghi li").removeClass('active');
         $(this).addClass('active');
-
-        portfolioIsotope.isotope({filter: $(this).data('filter')});
-
+        currentFilter = $(this).data('filter');
+        portfolioIsotope.isotope({ filter: currentFilter });
         $(".breadcrumb-item-filter").text($(this).text());
         
     });
@@ -127,10 +127,15 @@
         $("#portfolio-flters-luoghi li").removeClass('active');
         $("#portfolio-flters-temi li").removeClass('active');
         $(this).addClass('active');
-
-        portfolioIsotope.isotope({filter: $(this).data('filter')});
+        currentFilter = $(this).data('filter');
+        portfolioIsotope.isotope({ filter: currentFilter });
         
         $(".breadcrumb-item-filter").text($(this).text());
+    });
+
+    // Keep filter persistent while scrolling
+    $(window).on('scroll', function () {
+        portfolioIsotope.isotope({ filter: currentFilter });
     });
 
     // Testimonials carousel
