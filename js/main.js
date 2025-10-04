@@ -119,7 +119,7 @@
 
         portfolioIsotope.isotope({filter: $(this).data('filter')});
 
-        $(".breadcrumb-item-filter").textContent('active');
+        $(".breadcrumb-item-filter").text($(this).text());
         
     });
 
@@ -129,6 +129,8 @@
         $(this).addClass('active');
 
         portfolioIsotope.isotope({filter: $(this).data('filter')});
+        
+        $(".breadcrumb-item-filter").text($(this).text());
     });
 
     // Testimonials carousel
