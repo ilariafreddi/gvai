@@ -106,6 +106,27 @@
     });
     var currentFilter = '*';
 
+    // Ensure Lightbox only navigates visible (filtered) items
+    var updateLightboxGroup = function () {
+        var groupName = 'portfolio-visible';
+        $('.portfolio-item').each(function () {
+            var $item = $(this);
+            var $link = $item.find('a[data-lightbox]');
+            if ($link.length) {
+                if ($item.hasClass('isotope-hidden')) {
+                    $link.attr('data-lightbox', 'portfolio-hidden');
+                } else {
+                    $link.attr('data-lightbox', groupName);
+                }
+            }
+        });
+    };
+    // Run once and after every arrange
+    updateLightboxGroup();
+    $('.portfolio-container').on('arrangeComplete', function () {
+        updateLightboxGroup();
+    });
+
     $('#portfolio-flters li').on('click', function () {
         $("#portfolio-flters li").removeClass('active');
         $(this).addClass('active');
