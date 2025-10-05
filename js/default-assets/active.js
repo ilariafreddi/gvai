@@ -156,13 +156,9 @@
     }
 
     // ***********************************
-    // :: 8.0 Magnific Popup Active Code
+    // :: 8.0 Magnific Popup Active Code (REMOVED)
     // ***********************************
-    if ($.fn.magnificPopup) {
-        $('.video-play-btn').magnificPopup({
-            type: 'iframe'
-        });
-    }
+    // Removed to avoid conflicts with Lightbox2
 
 
     // ***********************************
